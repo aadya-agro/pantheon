@@ -91,28 +91,32 @@ src/
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
-### 1. Clone the repo
-
+### Option 1: Automated Setup
 ```bash
 git clone https://github.com/<your-username>/adya.git
 cd adya
+chmod +x setup.sh
+./setup.sh
 ```
 
-### 2. Install dependencies
-
+### Option 2: Manual Setup
 ```bash
-npm install
+git clone https://github.com/<your-username>/adya.git
+cd adya
+pnpm install  # or npm install
+pnpm dev      # or npm run dev
 ```
 
-### 3. Start development server
+The application will be available at **http://localhost:3000**
 
-```bash
-npm run dev
-```
+## 📚 Documentation
 
-The application will be available at http://localhost:300
+- **[📖 Installation Guide](./INSTALLATION.md)** - Detailed setup instructions
+- **[👩‍💻 Development Guide](./DEVELOPMENT.md)** - Architecture and coding guidelines
+- **[💡 Solution Overview](./solution.md)** - Technical solution details
+- **[🎯 Problem Statement](./problem-statement.md)** - Original requirements
 
 ---
 
