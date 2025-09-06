@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,11 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { ActivityTimeline } from "@/components/dashboard/ActivityTimeline";
-import { 
-  DollarSign, 
-  Clock, 
-  CheckCircle, 
-  AlertTriangle, 
+import {
+  DollarSign,
+  Clock,
+  CheckCircle,
+  AlertTriangle,
   CreditCard,
   TrendingUp,
   Plus,
@@ -36,7 +35,8 @@ interface DashboardStats {
 }
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  // Mock user for demo purposes
+  const user = { id: "demo-user", email: "demo@example.com" };
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState<DashboardStats>({
@@ -52,14 +52,14 @@ const Dashboard = () => {
 
   const checkUserRole = async () => {
     if (!user) return;
-    
+
     try {
       const { data, error } = await supabase
         .from('profiles')
         .select('role')
         .eq('id', user.id)
         .single();
-      
+
       if (!error && data?.role === 'admin') {
         setIsAdmin(true);
       }
@@ -76,31 +76,31 @@ const Dashboard = () => {
       const expensesQuery = supabase
         .from('expenses')
         .select('*');
-      
+
       if (!isAdmin) {
         expensesQuery.eq('user_id', user.id);
       }
 
       const { data: expenses, error } = await expensesQuery;
-      
+
       if (error) throw error;
 
       const currentMonth = new Date().getMonth();
       const currentYear = new Date().getFullYear();
 
       // Calculate stats
-      const totalSpent = expenses?.reduce((sum, expense) => 
+      const totalSpent = expenses?.reduce((sum, expense) =>
         expense.status === 'approved' ? sum + Number(expense.amount) : sum, 0) || 0;
-      
+
       const pendingExpenses = expenses?.filter(e => e.status === 'submitted').length || 0;
       const approvedExpenses = expenses?.filter(e => e.status === 'approved').length || 0;
       const rejectedExpenses = expenses?.filter(e => e.status === 'rejected').length || 0;
-      
+
       const thisMonthSpend = expenses?.filter(expense => {
         const expenseDate = new Date(expense.expense_date);
-        return expenseDate.getMonth() === currentMonth && 
-               expenseDate.getFullYear() === currentYear &&
-               expense.status === 'approved';
+        return expenseDate.getMonth() === currentMonth &&
+          expenseDate.getFullYear() === currentYear &&
+          expense.status === 'approved';
       }).reduce((sum, expense) => sum + Number(expense.amount), 0) || 0;
 
       // Category breakdown
@@ -125,14 +125,14 @@ const Dashboard = () => {
         const date = new Date();
         date.setMonth(date.getMonth() - i);
         const month = date.toLocaleString('default', { month: 'short' });
-        
+
         const monthlyTotal = expenses?.filter(expense => {
           const expenseDate = new Date(expense.expense_date);
-          return expenseDate.getMonth() === date.getMonth() && 
-                 expenseDate.getFullYear() === date.getFullYear() &&
-                 expense.status === 'approved';
+          return expenseDate.getMonth() === date.getMonth() &&
+            expenseDate.getFullYear() === date.getFullYear() &&
+            expense.status === 'approved';
         }).reduce((sum, expense) => sum + Number(expense.amount), 0) || 0;
-        
+
         monthlySpending.push({ month, amount: monthlyTotal });
       }
 
@@ -228,7 +228,7 @@ const Dashboard = () => {
     <div className="flex-1 space-y-8 p-6 bg-gradient-to-br from-background to-muted/20">
       {/* Hero Section */}
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground shadow-xl">
-        <div 
+        <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `url(${heroImage})`,
@@ -255,8 +255,8 @@ const Dashboard = () => {
                 <Upload className="h-4 w-4 mr-2" />
                 Add Dummy Data
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="enterprise-button text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/10 bg-white/10 backdrop-blur-sm shadow-lg"
                 onClick={() => window.location.href = '/add-expense'}
               >
@@ -264,8 +264,8 @@ const Dashboard = () => {
                 New Expense
               </Button>
               {isAdmin && (
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="enterprise-button text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/10 bg-white/10 backdrop-blur-sm shadow-lg"
                   onClick={() => window.location.href = '/approvals'}
                 >
@@ -294,7 +294,7 @@ const Dashboard = () => {
             positive: true
           }}
         />
-        
+
         <KPICard
           title={isAdmin ? "Pending Approvals" : "Pending Expenses"}
           value={stats.pendingExpenses.toString()}
@@ -305,7 +305,7 @@ const Dashboard = () => {
           } : undefined}
           description={isAdmin ? "Requires your approval" : "Awaiting approval"}
         />
-        
+
         <KPICard
           title="Approved Expenses"
           value={stats.approvedExpenses.toString()}
@@ -317,7 +317,7 @@ const Dashboard = () => {
           icon={<CheckCircle className="h-4 w-4" />}
           description="Successfully processed"
         />
-        
+
         <KPICard
           title="This Month"
           value={formatCurrency(stats.thisMonthSpend)}
@@ -371,7 +371,7 @@ const Dashboard = () => {
                     </div>
                   </Button>
                 )}
-                
+
                 <Button variant="outline" className="h-auto p-4 justify-start enterprise-button" onClick={() => window.location.href = '/add-expense'}>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center">
@@ -383,7 +383,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 </Button>
-                
+
                 {isAdmin && (
                   <Button variant="outline" className="h-auto p-4 justify-start enterprise-button" onClick={() => window.location.href = '/admin'}>
                     <div className="flex items-center gap-3">
@@ -397,7 +397,7 @@ const Dashboard = () => {
                     </div>
                   </Button>
                 )}
-                
+
                 <Button variant="outline" className="h-auto p-4 justify-start enterprise-button" onClick={createDummyExpenses}>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-info/10 flex items-center justify-center">
@@ -448,8 +448,8 @@ const Dashboard = () => {
                     {stats.expensesByCategory.map((category, index) => (
                       <div key={index} className="flex items-center justify-between text-sm">
                         <div className="flex items-center gap-2">
-                          <div 
-                            className="w-3 h-3 rounded-full" 
+                          <div
+                            className="w-3 h-3 rounded-full"
                             style={{ backgroundColor: category.color }}
                           />
                           <span>{category.name}</span>
@@ -468,7 +468,7 @@ const Dashboard = () => {
               )}
             </CardContent>
           </Card>
-          
+
           <ActivityTimeline />
         </div>
       </div>

@@ -1,73 +1,129 @@
-# Welcome to your Lovable project
 
-## Project info
+# 💸 Expense Automation – Redefining Effortless Tracking
 
-**URL**: https://lovable.dev/projects/59c0f8b0-45e9-4740-bfeb-6ae9db608fc7
+## 🚀 Problem
 
-## How can I edit this code?
+Most expense management apps require users to **manually enter expenses**, which is:
 
-There are several ways of editing your application.
+* Time-consuming
+* Error-prone
+* Often leads to incomplete tracking
 
-**Use Lovable**
+This results in **poor financial insights** and missed opportunities for better money management.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/59c0f8b0-45e9-4740-bfeb-6ae9db608fc7) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 💡 Proposed Solution
 
-**Use your preferred IDE**
+We are building an **Expense Automation Engine** that automatically:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* **Extracts** expense data from multiple sources (SMS, emails, receipts, bank statements)
+* **Categorizes** expenses intelligently using rule-based + AI models
+* **Logs** expenses seamlessly without user intervention
+* **Visualizes** data in a clean, intuitive dashboard
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## ✨ Key Features
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* 🔄 **Multi-source data extraction** (SMS, emails, notifications, receipts, CSV uploads)
+* 🧠 **AI-powered categorization** (e.g., Swiggy → Food, Uber → Travel)
+* 📊 **Real-time expense dashboard** with category breakdowns & trends
+* 🛡 **Privacy-first design** (end-to-end encryption, local-first OCR)
+* 🧹 **No duplicate entries** (smart redundancy checks)
+* 🛠 **User control** (manual overrides, custom categories & budgets)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🏆 Hackathon MVP
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+For the hackathon, we aim to build:
+
+1. **Data source integration** → SMS & Email parsing
+2. **Auto-expense logging** → Generate structured entries automatically
+3. **Categorization** → Rule-based + lightweight ML categorizer
+4. **Dashboard** → Display categorized expenses in a minimal UI
+
+✅ Core requirements:
+
+* No redundancy in captured data
+* Privacy and security of user information
+* Accuracy of automation and categorization
+
+---
+
+## 🛠 Tech Stack
+
+* **Frontend (Dashboard):** React.js / Next.js
+* **Backend & APIs:** Node.js + Express
+* **Database:** MongoDB (flexible schema for expense data)
+* **ML Categorization:** Python (spaCy / scikit-learn) or TensorFlow\.js
+* **OCR (for receipts):** Tesseract.js or Google Vision API
+* **Security:** JWT Auth + AES Encryption for sensitive fields
+
+---
+
+## 📌 Future Enhancements
+
+* 📱 UPI app & direct bank API integrations
+* 🔔 Smart notifications → “You spent ₹5,000 this week on Food, 20% higher than usual.”
+* 🤖 AI-powered budgeting assistant
+* ☁️ Multi-device sync & cloud backup
+* 🔗 Public API for fintech partners
+
+---
+
+## 🧑‍💻 Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/<your-username>/expense-automation.git
+cd expense-automation
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start development server
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### 4. Backend setup (if separate)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+cd backend
+npm install
+npm run dev
+```
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🤝 Contributing
 
-## What technologies are used for this project?
+We welcome contributions! Please:
 
-This project is built with:
+1. Fork the repo
+2. Create a feature branch (`feature/new-feature`)
+3. Commit changes and open a PR
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 🔒 Security
 
-Simply open [Lovable](https://lovable.dev/projects/59c0f8b0-45e9-4740-bfeb-6ae9db608fc7) and click on Share -> Publish.
+We prioritize user privacy. Sensitive data is **encrypted** and never stored without consent.
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## 📜 License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+MIT License – free to use and modify.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+👉 Would you like me to **make this README hackathon-optimized** (shorter, pitch-like with visuals/diagrams), or keep it as a **developer README** (detailed setup + contribution guide)?

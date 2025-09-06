@@ -12,16 +12,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { useAuth } from "@/contexts/AuthContext";
 
 export function Header() {
-  const { user, signOut } = useAuth();
+  // Mock user data for demo purposes
+  const mockUser = { email: "demo@example.com" };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-16 items-center px-6 gap-4">
         {/* Sidebar Toggle */}
         <SidebarTrigger className="hover:bg-muted/30 h-9 w-9" />
-        
+
         {/* Search */}
         <div className="flex-1 max-w-lg">
           <div className="relative">
@@ -54,9 +55,9 @@ export function Header() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-9 w-9 rounded-full hover:bg-muted/30">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.email}`} alt={user?.email} />
+                  <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${mockUser.email}`} alt={mockUser.email} />
                   <AvatarFallback className="bg-primary/10 text-primary font-medium">
-                    {user?.email?.charAt(0).toUpperCase()}
+                    {mockUser.email.charAt(0).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
               </Button>
@@ -64,9 +65,9 @@ export function Header() {
             <DropdownMenuContent className="w-64 p-2" align="end" forceMount>
               <DropdownMenuLabel className="font-normal p-3">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">{user?.email}</p>
+                  <p className="text-sm font-medium leading-none">{mockUser.email}</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    {user?.email}
+                    {mockUser.email}
                   </p>
                   <Badge variant="secondary" className="w-fit mt-1 text-xs">Finance Admin</Badge>
                 </div>
@@ -81,9 +82,9 @@ export function Header() {
                 <span>Settings</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem 
+              <DropdownMenuItem
                 className="text-destructive"
-                onClick={() => signOut()}
+                onClick={() => console.log('Logout clicked')}
               >
                 Log out
               </DropdownMenuItem>
