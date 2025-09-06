@@ -1,19 +1,10 @@
+# Adya - Smart Expense Automation
 
-# 💸 Expense Automation – Redefining Effortless Tracking
+🚀 **Redefining Effortless Expense Tracking**
 
-## 🚀 Problem
+Adya is an intelligent expense management application that automates expense entry and reduces manual effort for users. Say goodbye to tedious manual data entry and hello to smart, automated expense tracking.
 
-Most expense management apps require users to **manually enter expenses**, which is:
-
-* Time-consuming
-* Error-prone
-* Often leads to incomplete tracking
-
-This results in **poor financial insights** and missed opportunities for better money management.
-
----
-
-## 💡 Proposed Solution
+## 💡 The Solution
 
 We are building an **Expense Automation Engine** that automatically:
 
@@ -22,16 +13,21 @@ We are building an **Expense Automation Engine** that automatically:
 * **Logs** expenses seamlessly without user intervention
 * **Visualizes** data in a clean, intuitive dashboard
 
----
-
 ## ✨ Key Features
 
-* 🔄 **Multi-source data extraction** (SMS, emails, notifications, receipts, CSV uploads)
-* 🧠 **AI-powered categorization** (e.g., Swiggy → Food, Uber → Travel)
-* 📊 **Real-time expense dashboard** with category breakdowns & trends
-* 🛡 **Privacy-first design** (end-to-end encryption, local-first OCR)
-* 🧹 **No duplicate entries** (smart redundancy checks)
-* 🛠 **User control** (manual overrides, custom categories & budgets)
+- **🤖 Smart Automation**: Automatically captures expenses from multiple sources
+- **📱 Multi-Source Data Reading**: SMS, emails, notifications, digital receipts, bank statements
+- **🎯 Intelligent Categorization**: Auto-tags expenses (Swiggy → Food, Uber → Travel)
+- **🔒 Privacy First**: Secure handling of sensitive financial data
+- **📊 Real-time Analytics**: Track spending patterns and budgets
+- **🎨 Clean UI**: Minimal, intuitive interface built with Next.js and shadcn/ui
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS 4, shadcn/ui components
+- **Build Tool**: Turbopack for lightning-fast development
+- **Code Quality**: ESLint for consistent code standards
 
 ---
 
@@ -52,34 +48,56 @@ For the hackathon, we aim to build:
 
 ---
 
-## 🛠 Tech Stack
+## 🧱 Project Structure
 
-* **Frontend (Dashboard):** React.js / Next.js
-* **Backend & APIs:** Node.js + Express
-* **Database:** MongoDB (flexible schema for expense data)
-* **ML Categorization:** Python (spaCy / scikit-learn) or TensorFlow\.js
-* **OCR (for receipts):** Tesseract.js or Google Vision API
-* **Security:** JWT Auth + AES Encryption for sensitive fields
-
----
-
-## 📌 Future Enhancements
-
-* 📱 UPI app & direct bank API integrations
-* 🔔 Smart notifications → “You spent ₹5,000 this week on Food, 20% higher than usual.”
-* 🤖 AI-powered budgeting assistant
-* ☁️ Multi-device sync & cloud backup
-* 🔗 Public API for fintech partners
+```
+src/
+├── app/              # Next.js app router pages
+├── components/       # Reusable UI components
+│   ├── landing/      # Landing page components
+│   └── ui/           # shadcn/ui components
+├── lib/              # Utility functions
+├── types/            # TypeScript types
+└── styles/           # Global styles
+```
 
 ---
 
-## 🧑‍💻 Getting Started
+## 📦 Components
+
+### Landing Page Components
+- `Header` - Navigation and branding
+- `Hero` - Main value proposition and CTAs
+- `Features` - Key features with icons
+- `HowItWorks` - Step-by-step process explanation
+- `Security` - Privacy and security features
+- `CTA` - Final call to action
+- `Footer` - Additional links and information
+
+### UI Components
+- `Button` - Primary and secondary buttons
+- `Card` - Content containers
+- `Input` - Form inputs
+
+---
+
+## 🎨 Design Principles
+
+1. **Clean & Minimal**: Focus on essential elements
+2. **Consistent**: Unified design language across components
+3. **Accessible**: WCAG compliant UI components
+4. **Responsive**: Works on all device sizes
+5. **Performance**: Optimized for fast loading
+
+---
+
+## 🚀 Getting Started
 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/expense-automation.git
-cd expense-automation
+git clone https://github.com/<your-username>/adya.git
+cd adya
 ```
 
 ### 2. Install dependencies
@@ -94,13 +112,7 @@ npm install
 npm run dev
 ```
 
-### 4. Backend setup (if separate)
-
-```bash
-cd backend
-npm install
-npm run dev
-```
+The application will be available at http://localhost:300
 
 ---
 
@@ -126,4 +138,6 @@ MIT License – free to use and modify.
 
 ---
 
-👉 Would you like me to **make this README hackathon-optimized** (shorter, pitch-like with visuals/diagrams), or keep it as a **developer README** (detailed setup + contribution guide)?
+## 📞 Contact
+
+For questions or feedback, please open an issue or contact the team.
